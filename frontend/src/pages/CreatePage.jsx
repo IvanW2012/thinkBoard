@@ -2,6 +2,7 @@ import { ArrowLeftIcon } from 'lucide-react'
 import React from 'react'
 import toast from 'react-hot-toast'
 import { Link, useNavigate } from 'react-router'
+import api from '../lib/axios';
 
 const CreatePage = () => {
   const [title, setTitle] = React.useState('')
@@ -19,7 +20,7 @@ const CreatePage = () => {
     
     setLoading(true)
     try {
-      const response =await fetch('http://localhost:5001/api/notes', {
+      const response =await api('/notes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

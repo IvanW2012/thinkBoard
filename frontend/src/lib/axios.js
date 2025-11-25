@@ -1,7 +1,9 @@
-import axios from 'axios';
+// api.js
+const BASE_URL =
+  import.meta.env.MODE === "development"
+    ? "http://localhost:5001/api"
+    : "/api";
 
-const api = axios.create({
-    baseURL: 'http://localhost:5001/api'
-});
+const api = (path, options) => fetch(BASE_URL + path, options);
 
 export default api;

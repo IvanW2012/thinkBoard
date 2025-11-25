@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 import NoteCard from '../components/NoteCard'
 import NoteNotFound from '../components/NoteNotFound'
+import api from '../lib/axios'
 
 const HomePage = () => {
   const [isRateLimited, setIsRateLimited] = React.useState(false)
@@ -14,7 +15,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const response = await fetch('http://localhost:5001/api/notes')
+        const response = await api('/notes')
         const data = await response.json()
         if (!response.ok) {
           if (response.status === 429) {
